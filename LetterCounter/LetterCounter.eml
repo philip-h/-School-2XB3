@@ -3,4 +3,8 @@
 	<output-test url="file://$MODULE_DIR$/out/test/LetterCounter"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="jcommon-1.0.23" value="project"/>
+		<level name="jfreechart-1.0.19" value="project"/>
+	</levels>
 </component>
