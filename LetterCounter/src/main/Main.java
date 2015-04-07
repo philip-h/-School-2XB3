@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.WindowConstants;
 
 import charts.PieChart;
 
@@ -35,7 +37,7 @@ public class Main extends JFrame{
     public Main() {
         initFrame();
         setSize(new Dimension(300, 150));
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -49,8 +51,16 @@ public class Main extends JFrame{
         titlePane.add(title);
 
         JPanel buttonPane = new JPanel(new FlowLayout());
+        
         auto = new JButton("Auto Input");
         manual = new JButton("Manual Input");
+        
+        
+        
+        auto.setActionCommand("auto");
+        manual.setActionCommand("manual");
+
+
         buttonPane.add(auto);
         buttonPane.add(manual);
 

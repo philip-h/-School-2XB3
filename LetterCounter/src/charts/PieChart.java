@@ -23,7 +23,7 @@ public class PieChart extends ApplicationFrame {
         super(title);
         initTrie();
         setContentPane(createDemoPanel());
-
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     private PieDataset createDataset() {
@@ -34,24 +34,14 @@ public class PieChart extends ApplicationFrame {
         dataset.setValue("# of 's'", countPrefixes("s"));
         return dataset;
     }
-
-    private JFreeChart createChart(PieDataset dataset) {
-        JFreeChart chart = ChartFactory.createPieChart(
-                "Occurences of 1 and 2 letter patterns",  // chart title
-                dataset,        // data
-                false,           // include legend
-                true,
-                false);
-
-        return chart;
-    }
-
+    // create the Demo Panel
     public JPanel createDemoPanel() {
-        JFreeChart chart = createChart(createDataset());
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Occurences of 1 and 2 letter patterns", createDataset(), true, true, false);
         return new ChartPanel(chart);
     }
 
-
+    // 
     public void initTrie() {
         int c = 0;
         trie = new Trie();
