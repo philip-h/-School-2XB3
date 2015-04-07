@@ -34,13 +34,13 @@ public class BarChart extends ApplicationFrame {
     }
 
     private CategoryDataset createDataset() {
-        final DefaultCategoryDataset dataset =
-                new DefaultCategoryDataset();
+        final DefaultCategoryDataset dataset =  new DefaultCategoryDataset();
 
-        dataset.addValue(countPrefixes("sh"),"# of 'sh'","Some Category");
         dataset.addValue(countPrefixes("se"),"# of 'se'","Some Category");
         dataset.addValue(countPrefixes("th"),"# of 'th'","Some Category");
         dataset.addValue(countPrefixes("sa"),"# of 's'" ,"Some Category");
+        dataset.addValue(countPrefixes("sh"),"# of 'sh'","Some Category");
+
         return dataset;
     }
 
