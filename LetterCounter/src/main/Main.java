@@ -54,22 +54,8 @@ public class Main extends JFrame{
         buttonPane.add(auto);
         buttonPane.add(manual);
 
-        auto.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-        	
-        });
-        manual.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-        	
-        });
+        auto.addActionListener(new ButtonActionListener());
+        manual.addActionListener(new ButtonActionListener());
         contentPane.add(titlePane);
         contentPane.add(buttonPane);
 
