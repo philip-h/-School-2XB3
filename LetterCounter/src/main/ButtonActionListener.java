@@ -19,7 +19,7 @@ public class ButtonActionListener implements ActionListener {
 		String e = evt.getActionCommand();
 		
 		// If the button pressed is the auto
-		if (e.equals("auto")){
+		if (e.equals("InputEnter")){
 			// Create the letter counter
 			PieChart demo = new PieChart( "Letter Counter" );
 			// set teh size

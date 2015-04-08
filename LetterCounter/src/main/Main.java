@@ -40,7 +40,7 @@ public class Main extends JFrame{
 
 	JTextArea inputArea;
 	JRadioButton test1,test2;
-	JButton select;
+	JButton enter;
 	ButtonGroup bg;
 	JPanel panel;
 	JScrollPane scrollpane;
@@ -57,7 +57,7 @@ public class Main extends JFrame{
 	public Main(String title) {
         super(title);
 
-		this.setSize(new Dimension(450, 300));
+		this.setSize(new Dimension(550, 380));
         // Initialize Variables
         panel = new JPanel();
         inputArea = new JTextArea(20, 35);
@@ -75,7 +75,8 @@ public class Main extends JFrame{
         bg.add(test2);
         
         // Create the JButton for entering data
-        select = new JButton ("Enter");
+        enter = new JButton ("Enter");
+        enter.setActionCommand("InputEnter");
         
         // Add the radio buttons to the panel
         panel.add(test1);
@@ -85,12 +86,19 @@ public class Main extends JFrame{
 
         // Add components
         panel.add(scrollpane, BorderLayout.SOUTH);
-        panel.add(select);
+        panel.add(enter);
         panel.setVisible(true);
         
-        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        setContentPane(panel);
+        // Adding Action Listener
+        enter.addActionListener(new ButtonActionListener());
         
+        
+        scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        
+        
+        
+        setContentPane(panel);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
