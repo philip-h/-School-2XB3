@@ -16,7 +16,7 @@ import org.jfree.ui.ApplicationFrame;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class PieChart extends ApplicationFrame {
+public class PieChart extends JFrame {
     private Trie trie;
 
     public PieChart(String title) {
@@ -31,7 +31,7 @@ public class PieChart extends ApplicationFrame {
         dataset.setValue("# of 'sh'", countPrefixes("sh"));
         dataset.setValue("# of 'se'", countPrefixes("se"));
         dataset.setValue("# of 'th'", countPrefixes("th"));
-        dataset.setValue("# of 's'", countPrefixes("s"));
+        dataset.setValue("# of 's'" ,  countPrefixes("s"));
         return dataset;
     }
     // create the Demo Panel

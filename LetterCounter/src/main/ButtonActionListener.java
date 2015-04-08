@@ -35,7 +35,20 @@ public class ButtonActionListener implements ActionListener {
 	      
 	        demo.setVisible(true);
 		}else if (e.equals("manual")){
-			
+			// Create the letter counter
+			ManualInputFrame demo = new ManualInputFrame( "Letter Counter" );
+			// set teh size
+	        demo.setSize(560, 367);
+	        // center it
+	        RefineryUtilities.centerFrameOnScreen(demo);
+	       
+	        // trying to get rid of the default close operations
+	        demo.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+			        
+		    // custom window close even handling
+	        demo.addWindowListener(new CustomWindowListener());
+				      
+			demo.setVisible(true);
 		}
 		
 	}

@@ -37,7 +37,7 @@ public class Main extends JFrame{
     public Main() {
         initFrame();
         setSize(new Dimension(300, 150));
-        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
