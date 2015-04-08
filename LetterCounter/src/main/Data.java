@@ -28,12 +28,38 @@ public class Data {
         words2 = new ArrayList<>();
         Scanner input = null;
         try {
-            input = new Scanner(new FileReader("tes21.in"));
+            input = new Scanner(new FileReader("test2.in"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         while (input.hasNext())
             words2.add(input.next());
+    }
+
+    public static String getStringRep1() {
+       String out = "";
+        Scanner input = null;
+        try {
+            input = new Scanner(new FileReader("test1.in"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while (input.hasNext())
+           out += (input.nextLine() + "\n");
+        return out;
+    }
+
+    public static String getStringRep2() {
+        String out = "";
+        Scanner input = null;
+        try {
+            input = new Scanner(new FileReader("test2.in"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while (input.hasNext())
+            out += (input.nextLine() + "\n");
+        return out;
     }
 
     public static Iterable<String> getTest1() {

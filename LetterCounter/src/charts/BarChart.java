@@ -13,6 +13,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
+
 import java.util.ArrayList;
 
 public class BarChart extends ApplicationFrame {
