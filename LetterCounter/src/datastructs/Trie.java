@@ -11,7 +11,7 @@ public class Trie {
 
     // R-way trie node
     private static class Node {
-        private Integer val;
+        private Integer val = 0;
         private Node[] next = new Node[R];
     }
 
@@ -55,28 +55,37 @@ public class Trie {
         return get(x.next[c], key, d + 1);
     }
 
+	public int getCount(String key) {
+		Node x = get(root, key, 0);
+		if (x == null)
+			return 0;
+
+		return x.val;
+	}
+
+
     /*.**************************************************************************/
     /*.PUT*/
     /*.**************************************************************************/
+	
+	public void put(String key) {
+		root = put(root, key, 0);
+	}
 
-    public void put(String key, Integer val) {
-        if (val == null)
-            delete(key);
-        else root = put(root, key, val, 0);
-    }
+	private Node put(Node x, String key, int d) {
+		if (x == null)
+			x = new Node();
+		if (d == key.length()) {
+			x.val++;
+			return x;
+		}
 
-    private Node put(Node x, String key, Integer val, int d) {
-        if (x == null)
-            x = new Node();
-        if (d == key.length()) {
-            if (x.val == null) N++;
-            x.val = val;
-            return x;
-        }
-        char c = key.charAt(d);
-        x.next[c] = put(x.next[c], key, val, d + 1);
-        return x;
-    }
+		char c = key.charAt(d); // Use dth key char to identify subtrie.
+
+		x.next[c] = put(x.next[c], key, d + 1);
+
+		return x;
+	}
 
     /*.**************************************************************************/
     /*.KEYS*/
@@ -188,4 +197,19 @@ public class Trie {
                 return x;
         return null;
     }
+    
+    
+    // TEST CODE
+    
+//	public static void main(String [] args)
+//	{
+//		Trie t = new Trie();
+//		t.put("er");
+//		t.put("ed");
+//		t.put("et");
+//		t.put("et");
+//		t.put("et");
+//		t.put("a");
+//		System.out.println(t.getCount("et"));
+//	}
 }
