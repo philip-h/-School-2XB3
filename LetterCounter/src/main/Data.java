@@ -12,7 +12,7 @@ public class Data {
     private static ArrayList<String> words;
 
     public static void readWords() {
-        words = new ArrayList<>();
+        words = new ArrayList<>(); 
         Scanner input = null;
         try {
             input = new Scanner(new FileReader("data.in"));
