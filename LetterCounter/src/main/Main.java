@@ -2,10 +2,6 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,27 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-import charts.PieChart;
-
-import org.jfree.ui.RefineryUtilities;
-
 public class Main extends JFrame{
-
-    public static void main(String[] args) {
-        Data.readWords();
-        new Main("TITLE");
-        /*Show Pie Chart*/
-       /* 
-        PieChart demo = new PieChart( "Letter Counter" );
-        demo.setSize(560, 367);
-        RefineryUtilities.centerFrameOnScreen(demo);
-        demo.setVisible(true);
-        */
-    }
-    private JPanel contentPane;
-    private JLabel title;
-    private JButton auto, manual;
-
 	JTextArea inputArea;
 	JRadioButton test1,test2;
 	JButton enter;
@@ -62,15 +38,17 @@ public class Main extends JFrame{
         panel = new JPanel();
         inputArea = new JTextArea(20, 35);
         test1 = new JRadioButton("Test1");
+        test1.setActionCommand("test1");
         test2 = new JRadioButton("Test2");
+        test2.setActionCommand("test2");
         
         // Create a button group
         bg = new ButtonGroup();
         
     
-        // add the radio buttons to the button group
-        // The radio button group will allow for only one button to be pressed at a time
-        // the user will only be allowed to select one at a time 
+        /* add the radio buttons to the button group
+         * The radio button group will allow for only one button to be pressed at a time
+         * the user will only be allowed to select one at a time */
         bg.add(test1);
         bg.add(test2);
         
@@ -91,11 +69,11 @@ public class Main extends JFrame{
         
         // Adding Action Listener
         enter.addActionListener(new ButtonActionListener());
+        test1.addActionListener(new ButtonActionListener());
+        test2.addActionListener(new ButtonActionListener());
         
         
         scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        
-        
         
         setContentPane(panel);
         setLocationRelativeTo(null);
@@ -103,6 +81,10 @@ public class Main extends JFrame{
         setResizable(false);
         setVisible(true);
 
+    }
+
+    public static void main(String[] args) {
+        new Main("TITLE");
     }
 
 

@@ -3,6 +3,12 @@
 	<output-test url="file://$MODULE_DIR$/out/test/LetterCounter"/>
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="jcommon-1.0.23.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jcommon-1.0.23.jar!/"/>
+	</lib>
+	<lib name="jfreechart-1.0.19.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jfreechart-1.0.19.jar!/"/>
+	</lib>
 	<levels>
 		<level name="jcommon-1.0.23" value="project"/>
 		<level name="jfreechart-1.0.19" value="project"/>

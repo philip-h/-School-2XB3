@@ -11,7 +11,6 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class PieChart extends JFrame {
     public void initTrie() {
         int c = 0;
         trie = new Trie();
-        for (String s : Data.getWords()) {
+        for (String s : Data.getTest1()) {
             trie.put(s, c);
             c++;
         }
