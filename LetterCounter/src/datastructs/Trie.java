@@ -11,7 +11,7 @@ public class Trie {
 
     // R-way trie node
     private static class Node {
-        private Integer val = 0;
+        private Integer val = 0;		//The Amount Of Elements Stored
         private Node[] next = new Node[R];
     }
 
@@ -75,8 +75,9 @@ public class Trie {
 	private Node put(Node x, String key, int d) {
 		if (x == null)
 			x = new Node();
-		if (d == key.length()) {
-			x.val++;
+		if (d == key.length()) 
+		{
+			x.val++;	//Increment Found Index
 			return x;
 		}
 
