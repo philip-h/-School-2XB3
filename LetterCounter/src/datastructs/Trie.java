@@ -13,11 +13,7 @@ public class Trie {
     private Node root;      // root of trie
     private int N;          // number of keys in trie
 
-    // R-way trie node
-    private static class Node {
-        private Integer val = 0;		//The Amount Of Elements Stored
-        private Node[] next = new Node[R];
-    }
+
 
     /*.**************************************************************************/
     /*.SIZE OPERATIONS*/
@@ -78,7 +74,7 @@ public class Trie {
 
 	private Node put(Node x, String key, int d) {
 		if (x == null)
-			x = new Node();
+			x = new Node(key);
 		if (d == key.length()) 
 		{
 			x.val++;	//Increment Found Index
@@ -93,12 +89,40 @@ public class Trie {
 	}
 
     /*.**************************************************************************/
+    /*.NODES*/
+    /*.**************************************************************************/
+	
+    public Iterable<Node> nodes()
+    {
+    	return getNodes();
+    }
+    
+    private Iterable<Node> getNodes() {
+        ArrayList<Node> results = new ArrayList<>();
+        Node x = get(root, "", 0);
+        collectNodes(x, results);
+        return results;
+    }
+
+    private void collectNodes(Node x, ArrayList<Node> results) {
+        if (x == null)
+            return;
+        if (x.val != 0)
+            results.add(x);
+        for (char c = 0; c < R; c++) {
+            collectNodes(x.next[c], results);
+        }
+    }
+	
+    /*.**************************************************************************/
     /*.KEYS*/
     /*.**************************************************************************/
 
     public Iterable<String> keys() {
         return keysWithPrefix("");
     }
+    
+
 
     /*.**************************************************************************/
     /*.KEYS WITH PREFIX OF*/
@@ -114,7 +138,7 @@ public class Trie {
     private void collect(Node x, StringBuilder prefix, ArrayList<String> results) {
         if (x == null)
             return;
-        if (x.val != null)
+        if (x.val != 0)
             results.add(prefix.toString());
         for (char c = 0; c < R; c++) {
             prefix.append(c);
@@ -206,15 +230,42 @@ public class Trie {
     
     // TEST CODE
     
-//	public static void main(String [] args)
-//	{
-//		Trie t = new Trie();
-//		t.put("er");
-//		t.put("ed");
-//		t.put("et");
-//		t.put("et");
-//		t.put("et");
-//		t.put("a");
-//		System.out.println(t.getCount("et"));
-//	}
+	public static void main(String [] args)
+	{
+		Trie t = new Trie();
+		
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("zz");
+		t.put("er");
+		t.put("ed");
+		t.put("ev");
+		t.put("ev");
+		t.put("ev");
+		t.put("ev");
+		t.put("ev");
+		t.put("ev");
+		t.put("et");
+		t.put("et");
+		t.put("et");
+		t.put("a");
+
+
+		System.out.println(t.getCount("zz"));
+		
+		Iterable<Node> nodes = t.nodes();
+		for(Node n : nodes)
+		{
+			System.out.println(n.val);
+			System.out.println(n.key);
+		}
+		System.out.println(t.keys());
+		
+	}
 }
