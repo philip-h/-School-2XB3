@@ -94,24 +94,26 @@ public class Trie {
 	
     public ArrayList<Node> nodes()
     {
-    	return getNodes();
+    	return getNodes("");
     }
     
     
-    private ArrayList<Node> getNodes() {
+    private ArrayList<Node> getNodes(String prefix) {
         ArrayList<Node> results = new ArrayList<>();
         Node x = get(root, "", 0);
-        collectNodes(x, results);
+        collectNodes(x, results, new StringBuilder(prefix));
         return results;
     }
 
-    private void collectNodes(Node x, ArrayList<Node> results) {
+    private void collectNodes(Node x, ArrayList<Node> results,StringBuilder prefix) {
         if (x == null)
             return;
         if (x.val != 0)
-            results.add(x);
+            results.add(new Node(prefix.toString(), x.val));
         for (char c = 0; c < R; c++) {
-            collectNodes(x.next[c], results);
+        	prefix.append(c);
+            collectNodes(x.next[c], results, prefix);
+            prefix.deleteCharAt(prefix.length() - 1);
         }
     }
 	
@@ -241,6 +243,8 @@ public class Trie {
 		t.put("zz");
 		t.put("zz");
 		t.put("zz");
+		t.put("z");
+		t.put("a");
 		t.put("zz");
 		t.put("zz");
 		t.put("zz");
@@ -255,17 +259,17 @@ public class Trie {
 		t.put("et");
 		t.put("et");
 		t.put("et");
-		t.put("a");
-
-
-		System.out.println(t.getCount("zz"));
 		
-		Iterable<Node> nodes = t.nodes();
-		for(Node n : nodes)
-		{
-			System.out.println(n.val);
-			System.out.println(n.key);
-		}
+
+
+//		System.out.println(t.getCount("z"));
+//		
+//		Iterable<Node> nodes = t.nodes();
+//		for(Node n : nodes)
+//		{
+//			System.out.println(n.val);
+//			System.out.println(n.key);
+//		}
 		System.out.println(t.keys());
 		
 		ArrayList <Node> nArray = t.nodes();

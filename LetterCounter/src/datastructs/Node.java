@@ -12,6 +12,13 @@ public class Node implements Comparable<Node>{
         this.key = key;
         next = new Node[R];
     }
+    
+    public Node(String key, Integer val)
+    {
+        this.val = val;
+        this.key = key;
+        next = new Node[R];
+    }
 	@Override
 	public int compareTo(Node that) {
 		if(this.val < (that).val)
