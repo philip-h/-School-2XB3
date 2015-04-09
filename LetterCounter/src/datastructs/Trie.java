@@ -229,9 +229,7 @@ public class Trie {
                 return x;
         return null;
     }
-    
-    
-    
+
     public static Trie toTrie(String inString){
     	Trie t = new Trie();
     	// The current item and next items

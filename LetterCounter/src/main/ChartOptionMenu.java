@@ -13,14 +13,14 @@ public class ChartOptionMenu extends JFrame {
 
     private JLabel type;
     private ButtonGroup graphsGroup;
-    private JCheckBox pie;
-    private JCheckBox bar;
-    private JCheckBox plot;
+    private static JCheckBox pie;
+    private static JCheckBox bar;
+    private static JCheckBox line;
 
     private JLabel order;
     private ButtonGroup orderGroup;
-    private JCheckBox ltg;
-    private JCheckBox gtl;
+    private static JCheckBox ltg;
+    private static JCheckBox gtl;
 
     private JButton submit;
 
@@ -34,8 +34,8 @@ public class ChartOptionMenu extends JFrame {
     }
 
     private void initFrame() {
-    	// Creat and add components to the input panel
-    	// this panel takes what letters you want to display
+        // Creat and add components to the input panel
+        // this panel takes what letters you want to display
         JPanel inputPanel = new JPanel(new GridLayout(2,1));
         letters = new JLabel(" Letters");
         lettersField = new JTextField();
@@ -49,18 +49,18 @@ public class ChartOptionMenu extends JFrame {
         type = new JLabel(" Type");
         pie = new JCheckBox("Pie Graph");
         bar = new JCheckBox("Bar Graph");
-        plot = new JCheckBox("Plot Graph");
+        line = new JCheckBox("Plot Graph");
         graphsGroup = new ButtonGroup();
         graphsGroup.add(pie);
         graphsGroup.add(bar);
-        graphsGroup.add(plot);
+        graphsGroup.add(line);
         bottom.add(pie);
         bottom.add(bar);
-        bottom.add(plot);
+        bottom.add(line);
         graphPanel.add(type);
         graphPanel.add(bottom);
 
-        // The order panel lets you selct in what order the 
+        // The order panel lets you select in what order the
         // information should be added
         JPanel orderPanel = new JPanel(new GridLayout(2,1));
         bottom = new JPanel(new FlowLayout());
@@ -75,12 +75,14 @@ public class ChartOptionMenu extends JFrame {
         orderPanel.add(order);
         orderPanel.add(bottom);
 
-        // Allows user to submit the cuurent parameters and recieve their graphed information
+        // Allows user to submit the current parameters and receive their graphed information
         JPanel submitPanel = new JPanel(new FlowLayout());
         submit = new JButton("Submit");
+        submit.addActionListener(new ChartOptionActionListener());
+        submit.setActionCommand("InputSubmit");
         submitPanel.add(submit);
-        
-        // Add all he sub panes to the large contant panel
+
+        // Add all he sub panes to the large content panel
         contentPane = new JPanel(new GridLayout(4,1));
         contentPane.add(inputPanel);
         contentPane.add(graphPanel);
@@ -88,5 +90,25 @@ public class ChartOptionMenu extends JFrame {
         contentPane.add(submitPanel);
 
         setContentPane(contentPane);
+    }
+
+    public static String getTypeOfGraph() {
+        if (pie.isSelected())
+            return "pieGraph";
+        else if (bar.isSelected())
+            return "barGraph";
+        else if (line.isSelected())
+            return "lineGraph";
+        else
+            return null;
+    }
+
+    public static String getOrder() {
+        if (ltg.isSelected())
+            return "ltg";
+        else if (gtl.isSelected())
+            return "gtl";
+        else
+            return null;
     }
 }

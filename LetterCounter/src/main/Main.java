@@ -2,7 +2,6 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Main extends JFrame {
     private static JTextArea inputArea;
@@ -14,7 +13,7 @@ public class Main extends JFrame {
 
     /**
      * @param Main
-     *               
+     *
      *        		 This class will be used to design the test version of our input frame.
      *               Later it will be added to production and be used for the main input of the program.
      *               It will allow users to select from predetermined inputs and also allow for manual
@@ -22,7 +21,6 @@ public class Main extends JFrame {
      */
     public Main(String title) {
         super(title);
-
         this.setSize(new Dimension(550, 380));
         // Initialize Variables
         panel = new JPanel();
@@ -34,8 +32,8 @@ public class Main extends JFrame {
 
         // Create a button group
         bg = new ButtonGroup();
-        
-    
+
+
         /* add the radio buttons to the button group
          * The radio button group will allow for only one button to be pressed at a time
          * the user will only be allowed to select one at a time */
@@ -58,9 +56,9 @@ public class Main extends JFrame {
         panel.setVisible(true);
 
         // Adding Action Listener
-        enter.addActionListener(new ButtonActionListener());
-        test1.addActionListener(new ButtonActionListener());
-        test2.addActionListener(new ButtonActionListener());
+        enter.addActionListener(new MainMenuActionListener());
+        test1.addActionListener(new MainMenuActionListener());
+        test2.addActionListener(new MainMenuActionListener());
 
 
         scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -71,8 +69,10 @@ public class Main extends JFrame {
         setResizable(false);
         setVisible(true);
 
+
+
     }
-    
+
     // set the current content of the text area
     public static void setTextArea(String s) {
         inputArea.setText(s);
@@ -89,11 +89,11 @@ public class Main extends JFrame {
     }
 
     // gets the current contents of the text area
-	public static String getInputTextArea() {
-		return inputArea.getText();
-	}
+    public static String getInputTextArea() {
+        return inputArea.getText();
+    }
 
-	// main method, creates the main menu
+    // main method, creates the main menu
     public static void main(String[] args) {
         new Main("Letter Counter");
     }

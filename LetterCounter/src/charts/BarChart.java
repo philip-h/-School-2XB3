@@ -46,11 +46,10 @@ public class BarChart extends ApplicationFrame {
     }
 
     private void initTrie() {
-        int c = 0;
+        Data.readTest1();
         trie = new Trie();
         for (String s : Data.getTest1()) {
             trie.put(s);
-            c++;
         }
     }
 

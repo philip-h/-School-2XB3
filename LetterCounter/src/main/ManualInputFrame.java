@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-
+@Deprecated
 public class ManualInputFrame extends JFrame{
 	
 	JTextArea inputArea;

@@ -22,7 +22,7 @@ public class PieChart extends JFrame {
         super(title);
         initTrie();
         setContentPane(createDemoPanel());
-        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     private PieDataset createDataset() {
@@ -30,7 +30,7 @@ public class PieChart extends JFrame {
         dataset.setValue("# of 'sh'", countPrefixes("sh"));
         dataset.setValue("# of 'se'", countPrefixes("se"));
         dataset.setValue("# of 'th'", countPrefixes("th"));
-        dataset.setValue("# of 's'" ,  countPrefixes("s"));
+        dataset.setValue("# of 's'" , countPrefixes("s"));
         return dataset;
     }
     // create the Demo Panel
@@ -40,13 +40,12 @@ public class PieChart extends JFrame {
         return new ChartPanel(chart);
     }
 
-    // 
+    //
     public void initTrie() {
-        int c = 0;
+        Data.readTest1();
         trie = new Trie();
         for (String s : Data.getTest1()) {
             trie.put(s);
-            c++;
         }
     }
 
