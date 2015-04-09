@@ -23,6 +23,7 @@ public class ButtonActionListener implements ActionListener {
 				new ChartOptionMenu();
 			} else {
 				Main.getInputTextArea();
+				
 				System.out.println("POOH");
 			}
 

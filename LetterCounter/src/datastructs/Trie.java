@@ -64,9 +64,9 @@ public class Trie {
 	}
 
 
-    /*.**************************************************************************/
-    /*.PUT*/
-    /*.**************************************************************************/
+    /* **************************************************************************/
+    /*PUT*/
+    /* **************************************************************************/
 	
 	public void put(String key) {
 		root = put(root, key, 0);
@@ -231,49 +231,53 @@ public class Trie {
     }
     
     
-    // TEST CODE
     
-	public static void main(String [] args)
-	{
-		Trie t = new Trie();
-		
-		t.put("zz");
-		t.put("zz");
-		t.put("zz");
-		t.put("zz");
-		t.put("zz");
-		t.put("zz");
-		t.put("z");
-		t.put("a");
-		t.put("zz");
-		t.put("zz");
-		t.put("zz");
-		t.put("er");
-		t.put("ed");
-		t.put("ev");
-		t.put("ev");
-		t.put("ev");
-		t.put("ev");
-		t.put("ev");
-		t.put("ev");
-		t.put("et");
-		t.put("et");
-		t.put("et");
-		
+    public static Trie toTrie(String inString){
+    	Trie t = new Trie();
+    	// The current item and next items
+    	char current = '\0';
+    	char next = '\0';
+    	boolean countLast = false;
+    	try{
+    		// while the input string still has elements
+    		while (!(inString.equals(null))){
+    			try {
+    				// get the current first item in the trie
+    				current = inString.charAt(0);
+    				// get the second item in the trie
+    				next = inString.charAt(1);
+    				// add the first item AND the first + second pair
+    				t.put(current + "");
+    				t.put(current + "" + next );
+    			} catch(StringIndexOutOfBoundsException e){
+    				// If we got one string exception already this means
+    				// that the current is now on the last digit that is yet to be added
+    				if (countLast){
+    					t.put(current + "");
+    				}else 
+    					// Otherwise we set it to true so we can add it next time
+    					countLast = true;
+    			}
+    			// take the first item off the string
+    			inString = inString.substring(1);
+    			
 
-
-//		System.out.println(t.getCount("z"));
-//		
-//		Iterable<Node> nodes = t.nodes();
-//		for(Node n : nodes)
-//		{
-//			System.out.println(n.val);
-//			System.out.println(n.key);
-//		}
-		System.out.println(t.keys());
-		
-		ArrayList <Node> nArray = t.nodes();
-		for(Node n : nArray)
-			System.out.printf("%s, %d\n", n.key, n.val);
-	}
+    		}
+    	}catch (StringIndexOutOfBoundsException e){
+    	
+    	
+    	}
+    	// return the Trie
+		return t;
+    }
+    
+//    public static void main(String [] args){
+//    	String test = "aabaab";
+//    	Trie t = Trie.toTrie(test);
+//
+//
+//    	ArrayList <Node> nArray = t.nodes();
+//		for(Node n : nArray)
+//			System.out.printf("%s, %d\n", n.key, n.val);   
+//    }
 }
