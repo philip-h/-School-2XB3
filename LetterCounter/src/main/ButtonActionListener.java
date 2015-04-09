@@ -1,12 +1,12 @@
 package main;
 
-import charts.PieChart;
-import org.jfree.ui.RefineryUtilities;
-
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * 
+ * Added by George on 07/05/15
+ * 
+ */
 public class ButtonActionListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
@@ -14,7 +14,7 @@ public class ButtonActionListener implements ActionListener {
 		// Get the string from the pressed button for comparisons
 		String e = evt.getActionCommand();
 		
-		// If the button pressed is the auto
+		// If the button pressed 
 		if (e.equals("InputEnter")){
 
 			if (Main.getButtonSelected().equals("test1")) {
@@ -26,11 +26,13 @@ public class ButtonActionListener implements ActionListener {
 				System.out.println("POOH");
 			}
 
-		}else if (e.equals("test1")){
+		}
+		// Sets the text in the input area to a book when it is clicked 
+		else if (e.equals("test1")){
 			Main.setTextArea(Data.getStringRep1());
-
-
-		}else if (e.equals("test2")){
+		}
+		// Sets the text in the input area to a book when it is clicked 
+		else if (e.equals("test2")){
 			Main.setTextArea(Data.getStringRep2());
 		}
 		

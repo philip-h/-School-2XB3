@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Data {
     private static ArrayList<String> words1;
     private static ArrayList<String> words2;
-
+    // This method reads the test input one from file and adds it to the Words1 arraylist
     public static void readTest1() {
         words1 = new ArrayList<>();
         Scanner input = null;

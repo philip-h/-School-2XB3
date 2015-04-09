@@ -4,8 +4,15 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-/*
- * Added by George on 08/05/15
+/**
+ * 
+ * Created by George on 08/05/15
+ * 
+ * This Classes function is to provide custom event handling for each window
+ * It is used when a window needs o be disposed of but should not exit the entire 
+ * program. This can also be done with DISPOSE_ON_CLOSE, we took this approach to 
+ * add more modularity and seperate our view from our controller.
+ * 
  */
 
 public class CustomWindowListener implements WindowListener {

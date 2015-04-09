@@ -14,8 +14,8 @@ public class Main extends JFrame {
 
     /**
      * @param Main
-     *               <p>
-     *               This class will be used to design the test version of our input frame.
+     *               
+     *        		 This class will be used to design the test version of our input frame.
      *               Later it will be added to production and be used for the main input of the program.
      *               It will allow users to select from predetermined inputs and also allow for manual
      *               text based input in the form of a text box
@@ -72,28 +72,30 @@ public class Main extends JFrame {
         setVisible(true);
 
     }
-
+    
+    // set the current content of the text area
     public static void setTextArea(String s) {
         inputArea.setText(s);
     }
 
+    // Returns the current selected radio button
     public static String getButtonSelected() {
         if (test1.isSelected())
             return "test1";
         else if (test2.isSelected())
             return "test2";
         else
-            return "naaaw";
+            return null;
     }
 
-
-    public static void main(String[] args) {
-        new Main("TITLE");
-    }
-
+    // gets the current contents of the text area
 	public static String getInputTextArea() {
 		return inputArea.getText();
 	}
 
+	// main method, creates the main menu
+    public static void main(String[] args) {
+        new Main("Letter Counter");
+    }
 
 }

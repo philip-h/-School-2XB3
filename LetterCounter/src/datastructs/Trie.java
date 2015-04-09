@@ -1,7 +1,11 @@
 package datastructs;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * Added By Theo on 08/05/15
+ * 
+ */
 public class Trie {
     private static final int R = 256;        // Alphabet.. for now
 

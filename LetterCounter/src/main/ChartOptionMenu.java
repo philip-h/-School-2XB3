@@ -34,12 +34,16 @@ public class ChartOptionMenu extends JFrame {
     }
 
     private void initFrame() {
+    	// Creat and add components to the input panel
+    	// this panel takes what letters you want to display
         JPanel inputPanel = new JPanel(new GridLayout(2,1));
         letters = new JLabel(" Letters");
         lettersField = new JTextField();
         inputPanel.add(letters);
         inputPanel.add(lettersField);
 
+        // The graph panel allows you to select what type of
+        // graph you would like to display your information as
         JPanel graphPanel = new JPanel(new GridLayout(2,1));
         JPanel bottom = new JPanel(new FlowLayout());
         type = new JLabel(" Type");
@@ -56,6 +60,8 @@ public class ChartOptionMenu extends JFrame {
         graphPanel.add(type);
         graphPanel.add(bottom);
 
+        // The order panel lets you selct in what order the 
+        // information should be added
         JPanel orderPanel = new JPanel(new GridLayout(2,1));
         bottom = new JPanel(new FlowLayout());
         order = new JLabel(" Order");
@@ -69,10 +75,12 @@ public class ChartOptionMenu extends JFrame {
         orderPanel.add(order);
         orderPanel.add(bottom);
 
+        // Allows user to submit the cuurent parameters and recieve their graphed information
         JPanel submitPanel = new JPanel(new FlowLayout());
         submit = new JButton("Submit");
         submitPanel.add(submit);
-
+        
+        // Add all he sub panes to the large contant panel
         contentPane = new JPanel(new GridLayout(4,1));
         contentPane.add(inputPanel);
         contentPane.add(graphPanel);
