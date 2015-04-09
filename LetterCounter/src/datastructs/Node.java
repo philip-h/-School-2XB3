@@ -1,5 +1,6 @@
 package datastructs;
 
+
 public class Node implements Comparable<Node>{
 	private static final int R = 256; 
 	String key;

@@ -92,12 +92,13 @@ public class Trie {
     /*.NODES*/
     /*.**************************************************************************/
 	
-    public Iterable<Node> nodes()
+    public ArrayList<Node> nodes()
     {
     	return getNodes();
     }
     
-    private Iterable<Node> getNodes() {
+    
+    private ArrayList<Node> getNodes() {
         ArrayList<Node> results = new ArrayList<>();
         Node x = get(root, "", 0);
         collectNodes(x, results);
@@ -267,5 +268,8 @@ public class Trie {
 		}
 		System.out.println(t.keys());
 		
+		ArrayList <Node> nArray = t.nodes();
+		for(Node n : nArray)
+			System.out.printf("%s, %d\n", n.key, n.val);
 	}
 }
