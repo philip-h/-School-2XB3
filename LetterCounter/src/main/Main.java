@@ -91,5 +91,9 @@ public class Main extends JFrame {
         new Main("TITLE");
     }
 
+	public static String getInputTextArea() {
+		return inputArea.getText();
+	}
+
 
 }

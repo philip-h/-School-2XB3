@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/*
+ * Added by George on 08/05/15
+ */
 
 public class CustomWindowListener implements WindowListener {
 

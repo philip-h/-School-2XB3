@@ -16,26 +16,13 @@ public class ButtonActionListener implements ActionListener {
 		
 		// If the button pressed is the auto
 		if (e.equals("InputEnter")){
-//			Data.readTest1();
-//			// Create the letter counter
-//			PieChart demo = new PieChart( "Letter Counter" );
-//			// set teh size
-//	        demo.setSize(560, 367);
-//	        // center it
-//	        RefineryUtilities.centerFrameOnScreen(demo);
-//
-//	        // trying to get rid of the default close operations
-//	        demo.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-//
-//	        // custom window close even handling
-//	        demo.addWindowListener(new CustomWindowListener());
-//
-//	        demo.setVisible(true);
+
 			if (Main.getButtonSelected().equals("test1")) {
 				new ChartOptionMenu();
 			} else if (Main.getButtonSelected().equals("test2")) {
 				new ChartOptionMenu();
 			} else {
+				Main.getInputTextArea();
 				System.out.println("POOH");
 			}
 
