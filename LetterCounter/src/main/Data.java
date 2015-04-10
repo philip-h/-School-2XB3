@@ -14,15 +14,17 @@ public class Data {
        String out = "";
         Scanner input = null;
         try {
+        	// get the input from the scanner
             input = new Scanner(new FileReader("test1.in"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        // convert the file input into a string
         while (input.hasNext())
            out += (input.nextLine() + "\n");
         return out;
     }
-
+    // returns 
     public static String getStringRep2() {
         String out = "";
         Scanner input = null;
@@ -31,6 +33,7 @@ public class Data {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        // add the lines of the file into a string
         while (input.hasNext())
             out += (input.nextLine() + "\n");
         return out;

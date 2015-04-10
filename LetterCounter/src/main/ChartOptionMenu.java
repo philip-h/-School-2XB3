@@ -1,6 +1,9 @@
 package main;
 
 import javax.swing.*;
+
+import controller.ChartOptionActionListener;
+
 import java.awt.*;
 
 /**
@@ -103,7 +106,7 @@ public class ChartOptionMenu extends JFrame {
         else if (bar.isSelected())
             return "barGraph";
         else
-            return null;
+            return "";
     }
 
     //Return the order as a string
@@ -113,7 +116,7 @@ public class ChartOptionMenu extends JFrame {
         else if (gtl.isSelected())
             return "gtl";
         else
-            return null;
+            return "";
     }
 
     //Return whether you want to analyze single or double letters
