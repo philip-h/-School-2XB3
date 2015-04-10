@@ -9,8 +9,8 @@ import datastructs.Trie;
 
 public class TrieTesting {
 
-	Trie t;
-	char[] alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+	Trie t;	//Trie Object
+	char[] alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();	// Alphabet Array
 	
 	@Before
 	public void setUp()

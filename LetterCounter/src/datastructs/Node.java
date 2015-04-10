@@ -1,11 +1,16 @@
 package datastructs;
 
 
-public class Node implements Comparable<Node>{
-	private static final int R = 256; 
-	String key;
-	Integer val;
-    Node[] next;
+public class Node implements Comparable<Node>
+{
+	
+	//Initialize Variables
+	private static final int R = 256; //Max
+	private String key;		//String Name
+	private Integer val;	//Node Entry Coust
+    private Node[] next;	//Next Nodes
+    
+    
     public Node(String key)
     {
         val = 0;
@@ -19,8 +24,10 @@ public class Node implements Comparable<Node>{
         this.key = key;
         next = new Node[R];
     }
+    
 	@Override
-	public int compareTo(Node that) {
+	public int compareTo(Node that) 
+	{
 		if(this.val < (that).val)
 			return -1;
 		else if(this.val == (that).val)
@@ -28,4 +35,28 @@ public class Node implements Comparable<Node>{
 		else return 1;
 	}
 	
+	public String getKey()
+	{
+		return key;
+	}
+	
+	public Integer getValue()
+	{
+		return val;
+	}
+	
+	public Node[] getNextNodes()
+	{
+		return next;
+	}
+	
+	public void incrementValue()
+	{
+		val++;
+	}
+	
+	public void setValue(Integer v)
+	{
+		val = v;
+	}
 }
