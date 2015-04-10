@@ -1,12 +1,11 @@
 package testing;
 
-import static org.junit.Assert.*;
-
+import datastructs.MergeSort;
+import datastructs.Node;
 import org.junit.Before;
 import org.junit.Test;
 
-import datastructs.MergeSort;
-import datastructs.Node;
+import static org.junit.Assert.assertTrue;
 
 public class MergeSortTesting
 {

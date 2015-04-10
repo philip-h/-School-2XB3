@@ -2,7 +2,6 @@ package view;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,6 +19,7 @@ public class Data {
             e.printStackTrace();
         }
         // convert the file input into a string
+        while(input.hasNext())
            out += (input.nextLine() + "\n");
         return out;
     }

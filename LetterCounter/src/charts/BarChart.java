@@ -7,14 +7,14 @@ package charts;
 import datastructs.MergeSort;
 import datastructs.Node;
 import datastructs.Trie;
-import view.ChartOptionMenu;
-import view.MainMenu;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import view.ChartOptionMenu;
+import view.MainMenu;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class BarChart extends JFrame {
         //If the order check box is greatest to least, then add nodes to double list in reverse order
         } else {
             for (int i = nodes.length-1; i >= 0; i--) {
-                if (nodes[i].getKey().length() == 1)
+                if (nodes[i].getKey().length() == 1 && !nodes[i].getKey().equals(" "))
                     singleLetters.add(nodes[i]);
             }
         }

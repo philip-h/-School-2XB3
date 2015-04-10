@@ -1,5 +1,7 @@
 package view;
 
+import controller.SearchMenuActionListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,7 +15,7 @@ public class SearchMenu extends JFrame {
     private static JTextField searchField;
     private JButton submit;
 
-    private JLabel occurrence;
+    private static JLabel occurrence;
 
     private Font aFont = new Font("TimesRoman",Font.PLAIN,35);
     private Font bFont = new Font("TimesRoman",Font.PLAIN,15);
@@ -23,7 +25,7 @@ public class SearchMenu extends JFrame {
         setSize(400, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       // setResizable(false);
+        setResizable(false);
         setVisible(true);
     }
 
@@ -44,12 +46,12 @@ public class SearchMenu extends JFrame {
         //The submit button for the search menu
         JPanel submitPanel = new JPanel(new FlowLayout());
         submit = new JButton("Submit");
-        //submit.addActionListener(new SearchMenuActionListener());
+        submit.addActionListener(new SearchMenuActionListener());
         submit.setActionCommand("InputSubmit");
         submit.setFont(bFont);
         submitPanel.add(submit);
 
-        occurrence = new JLabel("e occurred 2354 times");
+        occurrence = new JLabel();
         occurrence.setFont(bFont);
         occurrence.setHorizontalAlignment(0);
 
@@ -64,5 +66,9 @@ public class SearchMenu extends JFrame {
 
     public static String getInput() {
         return searchField.getText();
+    }
+
+    public static void setLabel(String s) {
+        occurrence.setText(s);
     }
 }

@@ -5,7 +5,6 @@ import view.Data;
 import view.MainMenu;
 
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

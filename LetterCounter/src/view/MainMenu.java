@@ -1,9 +1,8 @@
 package view;
 
-import javax.swing.*;
-
 import controller.MainMenuActionListener;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu extends JFrame {

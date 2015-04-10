@@ -44,7 +44,7 @@ public class PieChart extends JFrame {
 
     //Create the Demo Panel
     private JPanel createDemoPanel() {
-        JFreeChart chart = ChartFactory.createPieChart("Occurrences of 1 and 2 letter patterns", createDataset(), false, true, false);
+        JFreeChart chart = ChartFactory.createPieChart("Occurrences of 1 and 2 letter patterns", createDataset(), false, false, false);
         return new ChartPanel(chart);
     }
 
