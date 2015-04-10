@@ -3,12 +3,15 @@ package controller;
 import charts.BarChart;
 import charts.PieChart;
 import view.ChartOptionMenu;
-import main.Data;
+import view.Data;
 import view.MainMenu;
+
 import org.jfree.ui.RefineryUtilities;
+
 import view.SearchMenu;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

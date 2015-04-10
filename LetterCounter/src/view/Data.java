@@ -1,4 +1,4 @@
-package main;
+package view;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,7 +20,6 @@ public class Data {
             e.printStackTrace();
         }
         // convert the file input into a string
-        while (input.hasNext())
            out += (input.nextLine() + "\n");
         return out;
     }
