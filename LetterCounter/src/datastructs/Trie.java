@@ -12,7 +12,6 @@ public class Trie
 	private static final int R = 256; // Alphabet.. for now
 
 	private Node root; // root of trie
-	private int N; // number of keys in trie
 
 
 	/*
@@ -35,8 +34,22 @@ public class Trie
 	/*
 	 * .*************************************************************************
 	 */
+	public Integer getCount(String key)
+	{
+		Node x = get(root, key, 0);
+		if (x == null)
+			return 0;
 
-
+		return x.getValue();
+	}
+	
+/**
+ * 
+ * @param x Root Node
+ * @param key String searched for.
+ * @param d Depth of search
+ * @return
+ */
 	private Node get(Node x, String key, int d)
 	{
 		if (x == null)
@@ -47,14 +60,7 @@ public class Trie
 		return get(x.getNextNodes()[c], key, d + 1);
 	}
 
-	public Integer getCount(String key)
-	{
-		Node x = get(root, key, 0);
-		if (x == null)
-			return 0;
 
-		return x.getValue();
-	}
 
 	/* ************************************************************************* */
 	/* PUT */

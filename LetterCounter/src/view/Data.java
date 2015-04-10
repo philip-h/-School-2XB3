@@ -9,7 +9,8 @@ import java.util.Scanner;
  */
 public class Data {
     // This method reads the test input one from file and adds it to the Words1 arraylist
-    public static String getStringRep1() {
+    public static String getStringRep1() 
+    {
        String out = "";
         Scanner input = null;
         try {
@@ -24,7 +25,8 @@ public class Data {
         return out;
     }
     // returns 
-    public static String getStringRep2() {
+    public static String getStringRep2() 
+    {
         String out = "";
         Scanner input = null;
         try {
