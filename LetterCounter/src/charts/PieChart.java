@@ -48,7 +48,7 @@ public class PieChart extends JFrame {
         ArrayList<Node> singleLetters = new ArrayList<>();
         DefaultPieDataset dataset = new DefaultPieDataset();
         for (Node n : nodes) {
-            if (n.getKey().length() == 1)
+            if (n.getKey().length() == 1 && !n.getKey().equals(" "))
                 singleLetters.add(n);
         }
         for (Node n : singleLetters) {

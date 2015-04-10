@@ -1,7 +1,6 @@
 package main;
 
 import charts.BarChart;
-import charts.LineChart;
 import charts.PieChart;
 import org.jfree.ui.RefineryUtilities;
 
@@ -36,11 +35,6 @@ public class ChartOptionActionListener implements ActionListener {
                 demo.setVisible(true);
             } else if (ChartOptionMenu.getTypeOfGraph().equals("barGraph")) {
                 BarChart chart = new BarChart("Letter Counter", "Number of Occurrences of Letters");
-                chart.pack();
-                RefineryUtilities.centerFrameOnScreen(chart);
-                chart.setVisible(true);
-            } else if (ChartOptionMenu.getTypeOfGraph().equals("lineGraph")) {
-                LineChart chart = new LineChart("School Vs Years" ,"Number of Schools vs years");
                 chart.pack();
                 RefineryUtilities.centerFrameOnScreen(chart);
                 chart.setVisible(true);

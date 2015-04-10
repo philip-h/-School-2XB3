@@ -17,7 +17,6 @@ public class ChartOptionMenu extends JFrame {
     private ButtonGroup graphsGroup;
     private static JCheckBox pie;
     private static JCheckBox bar;
-    private static JCheckBox line;
 
     private JLabel order;
     private ButtonGroup orderGroup;
@@ -58,14 +57,11 @@ public class ChartOptionMenu extends JFrame {
         type = new JLabel(" Type");
         pie = new JCheckBox("Pie Graph");
         bar = new JCheckBox("Bar Graph");
-        line = new JCheckBox("Plot Graph");
         graphsGroup = new ButtonGroup();
         graphsGroup.add(pie);
         graphsGroup.add(bar);
-        graphsGroup.add(line);
         bottom.add(pie);
         bottom.add(bar);
-        bottom.add(line);
         graphPanel.add(type);
         graphPanel.add(bottom);
 
@@ -106,8 +102,6 @@ public class ChartOptionMenu extends JFrame {
             return "pieGraph";
         else if (bar.isSelected())
             return "barGraph";
-        else if (line.isSelected())
-            return "lineGraph";
         else
             return null;
     }
