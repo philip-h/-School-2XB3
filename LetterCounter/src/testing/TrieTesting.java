@@ -40,7 +40,7 @@ public class TrieTesting {
 			
 			for(int i = 0; i < alphabet.length; i++)
 			{
-				assertEquals(t.getCount(Character.toString(alphabet[i])), q);
+				assertEquals((int)t.getCount(Character.toString(alphabet[i])), q);
 			}
 		}
 	}
@@ -58,7 +58,7 @@ public class TrieTesting {
 			
 			for(int i = 0; i < alphabet.length; i++)
 			{
-				assertEquals(t.getCount(Character.toString(alphabet[i]) + "D"), q);
+				assertEquals((int)t.getCount(Character.toString(alphabet[i]) + "D"), q);
 			}
 		}
 	}

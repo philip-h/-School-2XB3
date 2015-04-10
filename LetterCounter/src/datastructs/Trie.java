@@ -25,7 +25,7 @@ public class Trie
 
 	public boolean contains(String key)
 	{
-		return get(key) != null;
+		return getCount(key) != null;
 	}
 
 	/*
@@ -36,13 +36,6 @@ public class Trie
 	 * .*************************************************************************
 	 */
 
-	public Integer get(String key)
-	{
-		Node x = get(root, key, 0);
-		if (x == null)
-			return null;
-		return x.getValue();
-	}
 
 	private Node get(Node x, String key, int d)
 	{
@@ -54,7 +47,7 @@ public class Trie
 		return get(x.getNextNodes()[c], key, d + 1);
 	}
 
-	public int getCount(String key)
+	public Integer getCount(String key)
 	{
 		Node x = get(root, key, 0);
 		if (x == null)
