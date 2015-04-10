@@ -96,7 +96,7 @@ public class ChartOptionMenu extends JFrame {
 
         setContentPane(contentPane);
     }
-
+    //Return the type of graph as a string
     public static String getTypeOfGraph() {
         if (pie.isSelected())
             return "pieGraph";
@@ -106,6 +106,7 @@ public class ChartOptionMenu extends JFrame {
             return null;
     }
 
+    //Return the order as a string
     public static String getOrder() {
         if (ltg.isSelected())
             return "ltg";
@@ -115,6 +116,7 @@ public class ChartOptionMenu extends JFrame {
             return null;
     }
 
+    //Return whether you want to analyze single or double letters
     public static String getSingle() {
         if (singleLetters.isSelected())
             return "single";
