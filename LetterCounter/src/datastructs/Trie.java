@@ -14,23 +14,6 @@ public class Trie
 	private Node root; // root of trie
 	private int N; // number of keys in trie
 
-	/*
-	 * .*************************************************************************
-	 */
-	/* .SIZE OPERATIONS */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public int size()
-	{
-		return N;
-	}
-
-	public boolean isEmpty()
-	{
-		return size() == 0;
-	}
 
 	/*
 	 * .*************************************************************************
@@ -116,14 +99,9 @@ public class Trie
 
 	public ArrayList<Node> nodes()
 	{
-		return getNodes("");
-	}
-
-	private ArrayList<Node> getNodes(String prefix)
-	{
 		ArrayList<Node> results = new ArrayList<>();
 		Node x = get(root, "", 0);
-		collectNodes(x, results, new StringBuilder(prefix));
+		collectNodes(x, results, new StringBuilder(""));
 		return results;
 	}
 
@@ -142,156 +120,6 @@ public class Trie
 		}
 	}
 
-	/*
-	 * .*************************************************************************
-	 */
-	/* .getKeyS */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public Iterable<String> keys()
-	{
-		return keysWithPrefix("");
-	}
-
-	/*
-	 * .*************************************************************************
-	 */
-	/* .getKeyS WITH PREFIX OF */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public Iterable<String> keysWithPrefix(String prefix)
-	{
-		ArrayList<String> results = new ArrayList<>();
-		Node x = get(root, prefix, 0);
-		collect(x, new StringBuilder(prefix), results);
-		return results;
-	}
-
-	private void collect(Node x, StringBuilder prefix, ArrayList<String> results)
-	{
-		if (x == null)
-			return;
-		if (x.getValue() != 0)
-			results.add(prefix.toString());
-		for (char c = 0; c < R; c++)
-		{
-			prefix.append(c);
-			collect(x.getNextNodes()[c], prefix, results);
-			prefix.deleteCharAt(prefix.length() - 1);
-		}
-	}
-
-	/*
-	 * .*************************************************************************
-	 */
-	/* .getKeyS THAT MATCH */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public Iterable<String> keysThatMatch(String pattern)
-	{
-		ArrayList<String> results = new ArrayList<>();
-		collect(root, new StringBuilder(), pattern, results);
-		return results;
-	}
-
-	private void collect(Node x, StringBuilder prefix, String pattern,
-			ArrayList<String> results)
-	{
-		if (x == null)
-			return;
-
-		int d = prefix.length();
-
-		if (d == pattern.length() && x.getValue() != null)
-			results.add(prefix.toString());
-		if (d == pattern.length())
-			return;
-
-		char c = pattern.charAt(d);
-		if (c == '.')
-		{
-			for (char ch = 0; ch < R; ch++)
-			{
-				prefix.append(ch);
-				collect(x.getNextNodes()[ch], prefix, pattern, results);
-				prefix.deleteCharAt(prefix.length() - 1);
-			}
-		} else
-		{
-			prefix.append(c);
-			collect(x.getNextNodes()[c], prefix, pattern, results);
-			prefix.deleteCharAt(prefix.length() - 1);
-		}
-	}
-
-	/*
-	 * .*************************************************************************
-	 */
-	/* .LONGEST PREFIX OF */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public String longestPrefixOf(String query)
-	{
-		int length = longestPrefixOf(root, query, 0, 0);
-		return query.substring(0, length);
-	}
-
-	private int longestPrefixOf(Node x, String query, int d, int length)
-	{
-		if (x == null)
-			return length;
-		if (x.getValue() != null)
-			length = d;
-		if (d == query.length())
-			return length;
-		char c = query.charAt(d);
-		return longestPrefixOf(x.getNextNodes()[c], query, d + 1, length);
-	}
-
-	/*
-	 * .*************************************************************************
-	 */
-	/* .DELETE */
-	/*
-	 * .*************************************************************************
-	 */
-
-	public void delete(String key)
-	{
-		root = delete(root, key, 0);
-	}
-
-	private Node delete(Node x, String key, int d)
-	{
-		if (x == null)
-			return null;
-		if (d == key.length())
-		{
-			if (x.getValue() != null)
-				N--;
-			x.setValue(null);;
-		} else
-		{
-			char c = key.charAt(d);
-			x.getNextNodes()[c] = delete(x.getNextNodes()[c], key, d + 1);
-		}
-
-		// Remove subtrie rooted at x if it is completely empty
-		if (x.getValue() != null)
-			return x;
-		for (int c = 0; c < R; c++)
-			if (x.getNextNodes()[c] != null)
-				return x;
-		return null;
-	}
 
 	public static Trie toTrie(String inString)
 	{
