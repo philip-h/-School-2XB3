@@ -7,15 +7,14 @@ package charts;
 import datastructs.MergeSort;
 import datastructs.Node;
 import datastructs.Trie;
-import main.ChartOptionMenu;
-import main.Main;
+import view.ChartOptionMenu;
+import view.MainMenu;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.ApplicationFrame;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class BarChart extends JFrame {
     //Create a BarChart of the occurrences of letters
     public BarChart(String applicationTitle, String chartTitle) {
         super(applicationTitle);
-        trie = Trie.toTrie(Main.getInputTextArea());
+        trie = Trie.toTrie(MainMenu.getInputTextArea());
         JFreeChart barChart = ChartFactory.createBarChart(
                 chartTitle,
                 "Category",

@@ -7,8 +7,8 @@ package charts;
 import datastructs.MergeSort;
 import datastructs.Node;
 import datastructs.Trie;
-import main.ChartOptionMenu;
-import main.Main;
+import view.ChartOptionMenu;
+import view.MainMenu;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -24,7 +24,7 @@ public class PieChart extends JFrame {
     //Create a PieChart of the occurrences of letters
     public PieChart(String title) {
         super(title);
-        trie = Trie.toTrie(Main.getInputTextArea());
+        trie = Trie.toTrie(MainMenu.getInputTextArea());
         setContentPane(createDemoPanel());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
