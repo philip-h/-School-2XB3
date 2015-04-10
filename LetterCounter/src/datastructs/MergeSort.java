@@ -1,41 +1,43 @@
 package datastructs;
 
-import java.util.ArrayList;
 
-public class MergeSort {
-	private static ArrayList<Node> aux; // auxiliary array for merges
+public class MergeSort 
+{
+	private static Node[] aux; 
 
-	public static void sort(ArrayList<Node> a) {
-		aux = new ArrayList<Node>(a.size()); // Allocate space just once.
-		sort(a, 0, a.size() - 1);
-		System.out.println("RUN");
+	public static void sort(Node[] a) 
+	{
+		aux = new Node[a.length]; // Allocate space
+		sort(a, 0, a.length - 1);
 	}
 
-	private static void sort(ArrayList<Node> a, int lo, int hi) { // Sort
-																// a[lo..hi].
+	private static void sort(Node[] a, int lo, int hi) 
+	{ 
+
 		if (hi <= lo)
 			return;
 		int mid = lo + (hi - lo) / 2;
 		sort(a, lo, mid); // Sort left half.
 		sort(a, mid + 1, hi); // Sort right half.
-		merge(a, lo, mid, hi); // Merge results (code on page 271).
+		merge(a, lo, mid, hi); // Merge results 
 	}
 
-	public static void merge(ArrayList<Node> a, int lo, int mid, int hi) { // Merge
+	public static void merge(Node[] a, int lo, int mid, int hi) 
+	{ 
 		int i = lo, j = mid + 1;
 		for (int k = lo; k <= hi; k++)
 			// Copy a[lo..hi] to aux[lo..hi].
-			aux.set(k, a.get(k));
+			aux[k] = a[k];
 		for (int k = lo; k <= hi; k++)
 			// Merge back to a[lo..hi].
 			if (i > mid)
-				a.set(k, aux.get(j++));
+				a[k] = aux[j++];
 			else if (j > hi)
-				a.set(k, aux.get(i++));
-			else if (less(aux.get(j), aux.get(i)))
-				a.set(k, aux.get(j++));
+				a[k] = aux[i++];
+			else if (less(aux[j], aux[i]))
+				a[k] = aux[j++];
 			else
-				a.set(k, aux.get(i++));
+				a[k] = aux[i++];
 	}
 	
 	private static boolean less(Node aux2, Node aux3)
