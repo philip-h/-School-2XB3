@@ -312,7 +312,7 @@ public class Trie
 					// get the second item in the trie
 					next = inString.charAt(1);
 					if (current == '\n' || next == '\n'){
-						continue;
+					//	continue;
 					}
 					// add the first item AND the first + second pair
 					t.put(current + "");
