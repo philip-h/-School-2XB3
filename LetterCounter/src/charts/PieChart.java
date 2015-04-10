@@ -4,8 +4,10 @@ package charts;
  * Created by philip on 06/04/15.
  */
 
+import datastructs.Node;
 import datastructs.Trie;
-import main.Data;
+import main.ChartOptionMenu;
+import main.Main;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -20,36 +22,57 @@ public class PieChart extends JFrame {
 
     public PieChart(String title) {
         super(title);
-        initTrie();
+        trie = Trie.toTrie(Main.getInputTextArea());
         setContentPane(createDemoPanel());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     private PieDataset createDataset() {
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("# of 'sh'", countPrefixes("sh"));
-        dataset.setValue("# of 'se'", countPrefixes("se"));
-        dataset.setValue("# of 'th'", countPrefixes("th"));
-        dataset.setValue("# of 's'" , countPrefixes("s"));
-        return dataset;
+        ArrayList<Node> nodes = trie.nodes();
+
+        if (ChartOptionMenu.getSingle().equals("single")) {
+            return getSingleLetterDataSet(nodes);
+        } else {
+            return getDoubleLetterDataSet(nodes);
+        }
     }
     // create the Demo Panel
-    public JPanel createDemoPanel() {
-        JFreeChart chart = ChartFactory.createPieChart(
-                "Occurences of 1 and 2 letter patterns", createDataset(), true, true, false);
+    private JPanel createDemoPanel() {
+        JFreeChart chart = ChartFactory.createPieChart("Occurrences of 1 and 2 letter patterns", createDataset(), false, true, false);
         return new ChartPanel(chart);
     }
 
-    //
-    public void initTrie() {
-        Data.readTest1();
-        trie = new Trie();
-        for (String s : Data.getTest1()) {
-            trie.put(s);
+    private PieDataset getSingleLetterDataSet(ArrayList<Node> nodes) {
+        ArrayList<Node> singleLetters = new ArrayList<>();
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for (Node n : nodes) {
+            if (n.getKey().length() == 1)
+                singleLetters.add(n);
         }
+        for (Node n : singleLetters) {
+            String label = "# of "+n.getKey()+"'s";
+            System.out.println();
+            dataset.setValue(label,countOccurrences(n.getKey()));
+        }
+        return dataset;
+
     }
 
-    private double countPrefixes(String prefix) {
-        return ((ArrayList<String>) trie.keysWithPrefix(prefix)).size();
+    private PieDataset getDoubleLetterDataSet(ArrayList<Node> nodes) {
+        ArrayList<Node> singleLetters = new ArrayList<>();
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        for (Node n : nodes) {
+            if (n.getKey().length() == 2)
+                singleLetters.add(n);
+        }
+        for (Node n : singleLetters) {
+            String label = "# of "+n.getKey()+"'s";
+            dataset.setValue(label,countOccurrences(n.getKey()));
+        }
+        return dataset;
+    }
+
+    private double countOccurrences(String pattern) {
+        return ((ArrayList<String>) trie.keysWithPrefix(pattern)).size();
     }
 }

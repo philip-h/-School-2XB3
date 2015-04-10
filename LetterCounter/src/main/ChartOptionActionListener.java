@@ -21,12 +21,15 @@ public class ChartOptionActionListener implements ActionListener {
 
         if(e.equals("InputSubmit")) {
             String order = ChartOptionMenu.getOrder();
-            if (order == null)
-                JOptionPane.showMessageDialog(null,"Please Enter an order","Error",JOptionPane.ERROR_MESSAGE);
-            else if (ChartOptionMenu.getTypeOfGraph() == null) {
-                JOptionPane.showMessageDialog(null,"Please Enter a type of graph","Error",JOptionPane.ERROR_MESSAGE);
+
+            if (ChartOptionMenu.getSingle() == null){
+                JOptionPane.showMessageDialog(null, "Please enter single letter patterns or double letter patterns", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            else if (ChartOptionMenu.getTypeOfGraph().equals("pieGraph")) {
+            else if (ChartOptionMenu.getTypeOfGraph() == null) {
+                JOptionPane.showMessageDialog(null, "Please enter a type of graph", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (order == null) {
+                JOptionPane.showMessageDialog(null, "Please enter an order", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (ChartOptionMenu.getTypeOfGraph().equals("pieGraph")) {
                 PieChart demo = new PieChart("Letter Occurrences");
                 demo.setSize(560, 367);
                 RefineryUtilities.centerFrameOnScreen(demo);

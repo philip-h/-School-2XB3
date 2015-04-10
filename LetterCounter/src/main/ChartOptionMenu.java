@@ -8,8 +8,10 @@ import java.awt.*;
  */
 public class ChartOptionMenu extends JFrame {
     private JPanel contentPane;
-    private JLabel letters;
-    private JTextField lettersField;
+    private JLabel singleDouble;
+    private ButtonGroup singleGroup;
+    private static JCheckBox singleLetters;
+    private static JCheckBox doubleLetters;
 
     private JLabel type;
     private ButtonGroup graphsGroup;
@@ -28,24 +30,31 @@ public class ChartOptionMenu extends JFrame {
         initFrame();
         setSize(400, 300);
         setLocationRelativeTo(null);
-        addWindowListener(new CustomWindowListener());
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setVisible(true);
     }
 
     private void initFrame() {
-        // Creat and add components to the input panel
-        // this panel takes what letters you want to display
-        JPanel inputPanel = new JPanel(new GridLayout(2,1));
-        letters = new JLabel(" Letters");
-        lettersField = new JTextField();
-        inputPanel.add(letters);
-        inputPanel.add(lettersField);
+        // The single double panel allows you to select whether you
+        // would like to graph single letter patterns or double letter patterns
+        JPanel singleDoublePanel = new JPanel(new GridLayout(2,1));
+        JPanel bottom = new JPanel(new FlowLayout());
+        singleDouble = new JLabel(" Single or Double Letter Patterns");
+        singleLetters = new JCheckBox("Single");
+        doubleLetters = new JCheckBox("Double");
+        singleGroup = new ButtonGroup();
+        singleGroup.add(singleLetters);
+        singleGroup.add(doubleLetters);
+        bottom.add(singleLetters);
+        bottom.add(doubleLetters);
+        singleDoublePanel.add(singleDouble);
+        singleDoublePanel.add(bottom);
 
         // The graph panel allows you to select what type of
         // graph you would like to display your information as
         JPanel graphPanel = new JPanel(new GridLayout(2,1));
-        JPanel bottom = new JPanel(new FlowLayout());
+        bottom = new JPanel(new FlowLayout());
         type = new JLabel(" Type");
         pie = new JCheckBox("Pie Graph");
         bar = new JCheckBox("Bar Graph");
@@ -84,7 +93,7 @@ public class ChartOptionMenu extends JFrame {
 
         // Add all he sub panes to the large content panel
         contentPane = new JPanel(new GridLayout(4,1));
-        contentPane.add(inputPanel);
+        contentPane.add(singleDoublePanel);
         contentPane.add(graphPanel);
         contentPane.add(orderPanel);
         contentPane.add(submitPanel);
@@ -108,6 +117,15 @@ public class ChartOptionMenu extends JFrame {
             return "ltg";
         else if (gtl.isSelected())
             return "gtl";
+        else
+            return null;
+    }
+
+    public static String getSingle() {
+        if (singleLetters.isSelected())
+            return "single";
+        else if (doubleLetters.isSelected())
+            return "double";
         else
             return null;
     }

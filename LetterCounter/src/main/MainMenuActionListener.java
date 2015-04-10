@@ -1,5 +1,6 @@
 package main;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
@@ -16,7 +17,9 @@ public class MainMenuActionListener implements ActionListener {
 
 		// If the button pressed
 		if (e.equals("InputEnter")){
-			if (Main.getButtonSelected() == null) {
+			if (Main.getInputTextArea().equals("")) {
+				JOptionPane.showMessageDialog(null, "Please fill in the text field", "Error", JOptionPane.ERROR_MESSAGE);
+			} else if (Main.getButtonSelected() == null) {
 				new ChartOptionMenu();
 			} else if (Main.getButtonSelected().equals("test1")) {
 				new ChartOptionMenu();
