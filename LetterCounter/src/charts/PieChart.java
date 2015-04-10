@@ -4,6 +4,7 @@ package charts;
  * Created by philip on 06/04/15.
  */
 
+import datastructs.MergeSort;
 import datastructs.Node;
 import datastructs.Trie;
 import main.ChartOptionMenu;
@@ -29,11 +30,12 @@ public class PieChart extends JFrame {
 
     private PieDataset createDataset() {
         ArrayList<Node> nodes = trie.nodes();
-
+        Node [] nodesArray = nodes.toArray(new Node[nodes.size()]);
+        MergeSort.sort(nodesArray);
         if (ChartOptionMenu.getSingle().equals("single")) {
-            return getSingleLetterDataSet(nodes);
+            return getSingleLetterDataSet(nodesArray);
         } else {
-            return getDoubleLetterDataSet(nodes);
+            return getDoubleLetterDataSet(nodesArray);
         }
     }
     // create the Demo Panel
@@ -42,7 +44,7 @@ public class PieChart extends JFrame {
         return new ChartPanel(chart);
     }
 
-    private PieDataset getSingleLetterDataSet(ArrayList<Node> nodes) {
+    private PieDataset getSingleLetterDataSet(Node[] nodes) {
         ArrayList<Node> singleLetters = new ArrayList<>();
         DefaultPieDataset dataset = new DefaultPieDataset();
         for (Node n : nodes) {
@@ -50,15 +52,18 @@ public class PieChart extends JFrame {
                 singleLetters.add(n);
         }
         for (Node n : singleLetters) {
-            String label = "# of "+n.getKey()+"'s";
-            System.out.println(n.getValue());
+            String label;
+            if (n.getKey().equals(" "))
+                label = "# of spaces";
+            else
+                label = "# of "+n.getKey()+"'s";
             dataset.setValue(label,n.getValue());
         }
         return dataset;
 
     }
 
-    private PieDataset getDoubleLetterDataSet(ArrayList<Node> nodes) {
+    private PieDataset getDoubleLetterDataSet(Node[] nodes) {
         ArrayList<Node> singleLetters = new ArrayList<>();
         DefaultPieDataset dataset = new DefaultPieDataset();
         for (Node n : nodes) {
@@ -66,13 +71,13 @@ public class PieChart extends JFrame {
                 singleLetters.add(n);
         }
         for (Node n : singleLetters) {
-            String label = "# of "+n.getKey()+"'s";
+            String label;
+            if (n.getKey().equals(" "))
+                label = "# of spaces";
+            else
+                label = "# of "+n.getKey()+"'s";
             dataset.setValue(label,n.getValue());
         }
         return dataset;
-    }
-
-    private double countOccurrences(String pattern) {
-        return ((ArrayList<String>) trie.keysWithPrefix(pattern)).size();
     }
 }
