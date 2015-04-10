@@ -10,21 +10,21 @@ public class Node implements Comparable<Node>
 	private Integer val;	//Node Entry Coust
     private Node[] next;	//Next Nodes
     
-    
+    // create a node with a predetermied key, and val = 0
     public Node(String key)
     {
         val = 0;
         this.key = key;
         next = new Node[R];
     }
-    
+    // create a node with a predefined value an key
     public Node(String key, Integer val)
     {
         this.val = val;
         this.key = key;
         next = new Node[R];
     }
-    
+    // compare node 
 	@Override
 	public int compareTo(Node that) 
 	{
