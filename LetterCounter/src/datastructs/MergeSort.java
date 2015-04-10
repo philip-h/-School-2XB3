@@ -22,7 +22,7 @@ public class MergeSort
 		merge(a, lo, mid, hi); // Merge results 
 	}
 
-	public static void merge(Node[] a, int lo, int mid, int hi) 
+	private static void merge(Node[] a, int lo, int mid, int hi) 
 	{ 
 		int i = lo, j = mid + 1;
 		for (int k = lo; k <= hi; k++)
