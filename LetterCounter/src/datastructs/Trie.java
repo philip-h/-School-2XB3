@@ -311,6 +311,9 @@ public class Trie
 					current = inString.charAt(0);
 					// get the second item in the trie
 					next = inString.charAt(1);
+					if (current == '\n' || next == '\n'){
+						continue;
+					}
 					// add the first item AND the first + second pair
 					t.put(current + "");
 					t.put(current + "" + next);
@@ -319,13 +322,11 @@ public class Trie
 					// If we got one string exception already this means
 					// that the current is now on the last digit that is yet to
 					// be added
-					if (countLast)
-					{
+						
 						t.put(current + "");
-					} else
+						break;
 						// Otherwise we set it to true so we can add it next
 						// time
-						countLast = true;
 				}
 				// take the first item off the string
 				inString = inString.substring(1);
@@ -339,13 +340,5 @@ public class Trie
 		return t;
 	}
 
-	// public static void main(String [] args){
-	// String test = "aabaab";
-	// Trie t = Trie.toTrie(test);
-	//
-	//
-	// ArrayList <Node> nArray = t.nodes();
-	// for(Node n : nArray)
-	// System.out.printf("%s, %d\n", n.getKey, n.getValue());
-	// }
+
 }

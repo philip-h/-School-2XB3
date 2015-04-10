@@ -51,8 +51,8 @@ public class PieChart extends JFrame {
         }
         for (Node n : singleLetters) {
             String label = "# of "+n.getKey()+"'s";
-            System.out.println();
-            dataset.setValue(label,countOccurrences(n.getKey()));
+            System.out.println(n.getValue());
+            dataset.setValue(label,n.getValue());
         }
         return dataset;
 
@@ -67,7 +67,7 @@ public class PieChart extends JFrame {
         }
         for (Node n : singleLetters) {
             String label = "# of "+n.getKey()+"'s";
-            dataset.setValue(label,countOccurrences(n.getKey()));
+            dataset.setValue(label,n.getValue());
         }
         return dataset;
     }
